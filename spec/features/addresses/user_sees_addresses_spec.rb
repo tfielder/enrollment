@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'when a user visits /students/:id/addresses/new' do
   describe 'fill in address fields' do
     it 'takes you to student show page' do
+      student = Student.create(name: "Henry")
+      visit new_student_address_path(student)
+
       
-      visit (student)
     end
   end
 end
