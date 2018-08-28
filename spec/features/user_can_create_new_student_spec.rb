@@ -10,12 +10,14 @@ describe 'user visits student/new' do
 
     end
     it 'can fill out form' do
+      student = Student.create()
+
       visit new_student_path
 
       fill_in "student[name]", with: "Sal"
       click_on "Submit"
 
-      expect(current_path).to eq(student_path(@student))
+      expect(current_path).to eq(student_path(student))
       expect(page).to have_content("Sal")
     end
   end
