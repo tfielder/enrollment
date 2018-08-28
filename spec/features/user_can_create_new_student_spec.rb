@@ -7,16 +7,15 @@ describe 'user visits student/new' do
       visit new_student_path
 
       expect(page).to have_content("Name:")
-      expect(page).to have_content("Submit")
 
     end
     it 'can fill out form' do
       visit new_student_path
 
-      fill_in "Name", with: "Sal"
+      fill_in "student[name]", with: "Sal"
       click_on "Submit"
 
-      expect(current_path).to eq(student_path(student))
+      expect(current_path).to eq(student_path(@student))
       expect(page).to have_content("Sal")
     end
   end
