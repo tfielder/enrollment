@@ -23,5 +23,12 @@ describe Address do
         expect(a1).to be_valid
       end
     end
+
+  end
+  describe 'associations' do
+    it 'should respond to students' do
+      a1 = Address.create(description: "summer", street: "1234 Sesame", city: "Denver", state: "CO", zip: 80212)
+      expect(a1).to respond_to(:student)
+    end
   end
 end
