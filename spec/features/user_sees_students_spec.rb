@@ -12,8 +12,8 @@ describe "As a user" do
   end
   describe "When I visit /students" do
     scenario "I see a list of all student names" do
-      s1 = Student.new(name: "Turing")
-      s2 = Student.new(name: "Kelly")
+      s1 = Student.create(name: "Turing")
+      s2 = Student.create(name: "Kelly")
 
       visit students_path
 
