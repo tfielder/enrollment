@@ -23,7 +23,6 @@ describe Address do
         expect(a1).to be_valid
       end
     end
-
   end
   describe 'associations' do
     it 'should respond to students' do
