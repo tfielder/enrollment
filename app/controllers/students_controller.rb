@@ -23,6 +23,14 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])    #dunno why I'm getting error that show doesn't exist
   end
 
+  def destroy
+    student = Student.find(params[:id])
+    student.destroy
+
+    flash[:success] = "#{student.name} was successfully deleted."
+    redirect_to students_path
+  end
+
   private
     def student_params
       params.require(:student).permit(:name)
