@@ -1,36 +1,24 @@
 require 'rails_helper'
 
-describe Student do
-  describe "validations" do
-    context "invalid attributes" do
-      it "is invalid without a name" do
-        student = Student.new()
-        expect(student).to be_invalid
-      end
+describe "As a user" do
+  describe "When I visit /students/:id" do
+    scenario "I see the name of a student" do
+      student = Student.new(name: "Turing")
 
-  #     it "is invalid without a level of interest" do
-  #       job = Job.new(title: "Developer", description: "Wahoo", city: "Denver")
-  #       expect(job).to be_invalid
-  #     end
-  #
-  #     it "is invalid without a city" do
-  #       job = Job.new(title: "Developer", description: "Wahoo", level_of_interest: 80)
-  #       expect(job).to be_invalid
-  #     end
+      visit student_path(student)
+
+      expect(page).to have_content(student.name)
     end
-  #
-    context "valid attributes" do
-      # it "is valid with a name" do
-      #   student = Student.new(name: "Turing")
-      #   expect(student).to be_valid
-      # end
+  end
+  describe "When I visit /students" do
+    scenario "I see a list of all student names" do
+      s1 = Student.new(name: "Turing")
+      s2 = Student.new(name: "Kelly")
+
+      visit students_path
+
+      expect(page).to have_content(s1.name)
+      expect(page).to have_content(s2.name)
     end
-  # end
-  #
-  # describe "relationships" do
-  #   it "belongs to a company" do
-  #     job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
-  #     expect(job).to respond_to(:company)
-  #   end
   end
 end
